@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Bot</title>
+    <link rel="stylesheet" href="./styles/style.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Chat Bot</h1>
+    </header>
+    <main>
+      <div id="container">
+        <!-- Initial Message -->
+        <h2 id="initialMessage">How can I help you?</h2>
+
+        <!-- Chat History -->
+        <div id="chatHistory"></div>
+
+        <!-- User Input Container... -->
+        <div id="inputContainer">
+          <input placeholder="Ask anything..." id="userMessage" type="text" />
+          <button id="sendUserMessage">Send</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Project Chat Bot. Project Repository <a href="#">Link</a></p>
+    </footer>
+
+    <!-- GSAP CDN -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- GSAP Control Script -->
+    <script src="./javascripts/GSAPControl.js"></script>
+    <!-- Main Script -->
+    <script type="module" src="./javascripts/script.js"></script>
+  </body>
+</html>
