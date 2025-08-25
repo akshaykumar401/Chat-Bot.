@@ -152,6 +152,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  overflow-wrap: break-word;
+}
+pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1.1rem;
 }
 
 /* Responsive Code... */

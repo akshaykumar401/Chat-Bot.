@@ -3,12 +3,18 @@ const chatHistory = document.getElementById("chatHistory");
 const userMessage = document.getElementById("userMessage");
 const sendUserMessage = document.getElementById("sendUserMessage");
 
+// Activate Server...
+const ActivateServer = async () => {
+  const response = await fetch('https://chat-bot-backend-q9a8.onrender.com/start')
+}
+ActivateServer();
+
 // create user message element...
 const userMessageElement = () => {
   const userMessageElement = document.createElement("div");
   userMessageElement.classList.add("user");
   userMessageElement.innerHTML = `
-    <p>${userMessage.value}</p>
+    <pre>${marked.parse(userMessage.value)}</pre>
   `;
   return userMessageElement;
 };
@@ -32,11 +38,11 @@ const botMessageElement = async () => {
   
     if ( data.status === 200 ) {
       botMessageElement.innerHTML =  `
-        <p>${data.data.response}</p>
+        <pre>${marked.parse(data.data.response)}</pre>
       `;
     } else {
       botMessageElement.innerHTML = `
-        <p>${data.message}</p>
+        <pre>${marked.parse(data.message)}</pre>
       `;
     }
     
