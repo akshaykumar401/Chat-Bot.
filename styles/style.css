@@ -41,6 +41,7 @@ footer {
   box-shadow: 5px 5px 15px #acaaaa;
   position: fixed;
   bottom: 0;
+  flex-direction: column;;
 }
 footer p {
   font-family: "Macondo", cursive;
@@ -191,6 +192,9 @@ pre {
   }
 
   footer p {
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+  footer pre {
+    font-size: 0.8rem;
   }
 }
