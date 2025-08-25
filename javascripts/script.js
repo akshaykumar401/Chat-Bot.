@@ -9,6 +9,11 @@ const ActivateServer = async () => {
 }
 ActivateServer();
 
+// Scroll to Bottom Function....
+const scrollToBottom = () => {
+  chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
 // create user message element...
 const userMessageElement = () => {
   const userMessageElement = document.createElement("div");
@@ -60,8 +65,10 @@ sendUserMessage.addEventListener("click", async () => {
   sendUserMessage.innerText = "Loading";
 
   chatHistory.appendChild(userMessageElement());
+  scrollToBottom();
   const botElement = await botMessageElement();
   if (botElement) chatHistory.appendChild(botElement);
+  scrollToBottom();
 
   // Making Default Setting...
   sendUserMessage.innerText = "Send";
@@ -76,8 +83,10 @@ userMessage.addEventListener("keypress", async (event) => {
     sendUserMessage.innerText = "Loading";
 
     chatHistory.appendChild(userMessageElement());
+    scrollToBottom();
     const botElement = await botMessageElement();
     if (botElement) chatHistory.appendChild(botElement);
+    scrollToBottom();
 
     // Making Default Setting....
     sendUserMessage.innerText = "Send";
