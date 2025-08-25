@@ -15,7 +15,7 @@ const userMessageElement = () => {
 
 // create bot message element...
 const botMessageElement = async () => {
-  const response = await fetch('https://chat-bot-backend-ruby.vercel.app/chat-bot/request/', {
+  const response = await fetch('https://chat-bot-backend-q9a8.onrender.com/chat-bot/request/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
