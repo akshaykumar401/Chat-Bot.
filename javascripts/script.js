@@ -59,6 +59,7 @@ sendUserMessage.addEventListener("click", async () => {
 
   // Making Default Setting...
   sendUserMessage.innerText = "Send";
+  sendUserMessage.disabled = false;
   userMessage.value = "";
 });
 
@@ -74,6 +75,7 @@ userMessage.addEventListener("keypress", async (event) => {
 
     // Making Default Setting....
     sendUserMessage.innerText = "Send";
+    sendUserMessage.disabled = false;
     userMessage.value = "";
   }
 });
