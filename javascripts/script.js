@@ -77,7 +77,11 @@ sendUserMessage.addEventListener("click", async () => {
 });
 
 userMessage.addEventListener("keypress", async (event) => {
-  if (event.key === "Enter") {
+  if (event.key !== "Enter") return;
+  if (userMessage.value === "") return;
+  if (sendUserMessage.disabled) return;
+  
+  if (event.key === "Enter" && userMessage.value !== "") {
     // sendUserMessage manuplating...
     sendUserMessage.disabled = true;
     sendUserMessage.innerText = "Loading";
@@ -94,3 +98,4 @@ userMessage.addEventListener("keypress", async (event) => {
     userMessage.value = "";
   }
 });
+
