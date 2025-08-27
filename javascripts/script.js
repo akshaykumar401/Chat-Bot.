@@ -21,7 +21,8 @@ const userMessageElement = () => {
   userMessageElement.innerHTML = `
     <pre>${marked.parse(userMessage.value)}</pre>
   `;
-  return userMessageElement;
+  chatHistory.appendChild(userMessageElement);
+  scrollToBottom();
 };
 
 // create bot message element...
@@ -51,10 +52,33 @@ const botMessageElement = async () => {
       `;
     }
     
-    return botMessageElement;
+    chatHistory.appendChild(botMessageElement);
+    scrollToBottom();
   }
 
 };
+
+// Handling Enter Key Press...
+document.addEventListener("DOMContentLoaded", () => {
+    userMessage.addEventListener("keypress", async (event) => {
+    if (event.key !== "Enter") return;
+    if (userMessage.value === "") return;
+    if (sendUserMessage.disabled) return;
+
+    // sendUserMessage manuplating...
+    sendUserMessage.disabled = true;
+    sendUserMessage.innerText = "Loading";
+
+    userMessageElement();
+    botMessageElement();
+
+    // Making Default Setting....
+    sendUserMessage.innerText = "Send";
+    sendUserMessage.disabled = false;
+    userMessage.value = "";
+  });
+});
+
 
 // Adding Message in chat history when user click the send Button...
 sendUserMessage.addEventListener("click", async () => {
@@ -64,11 +88,8 @@ sendUserMessage.addEventListener("click", async () => {
   sendUserMessage.disabled = true;
   sendUserMessage.innerText = "Loading";
 
-  chatHistory.appendChild(userMessageElement());
-  scrollToBottom();
-  const botElement = await botMessageElement();
-  if (botElement) chatHistory.appendChild(botElement);
-  scrollToBottom();
+  userMessageElement();
+  botMessageElement();
 
   // Making Default Setting...
   sendUserMessage.innerText = "Send";
@@ -76,26 +97,5 @@ sendUserMessage.addEventListener("click", async () => {
   userMessage.value = "";
 });
 
-userMessage.addEventListener("keypress", async (event) => {
-  if (event.key !== "Enter") return;
-  if (userMessage.value === "") return;
-  if (sendUserMessage.disabled) return;
-  
-  if (event.key === "Enter" && userMessage.value !== "") {
-    // sendUserMessage manuplating...
-    sendUserMessage.disabled = true;
-    sendUserMessage.innerText = "Loading";
 
-    chatHistory.appendChild(userMessageElement());
-    scrollToBottom();
-    const botElement = await botMessageElement();
-    if (botElement) chatHistory.appendChild(botElement);
-    scrollToBottom();
-
-    // Making Default Setting....
-    sendUserMessage.innerText = "Send";
-    sendUserMessage.disabled = false;
-    userMessage.value = "";
-  }
-});
 
