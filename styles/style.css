@@ -155,6 +155,9 @@ main {
   justify-content: flex-start;
   overflow-wrap: break-word;
 }
+.bot pre, .user pre {
+  padding-left: 5px;
+}
 pre {
   word-wrap: break-word;
   white-space: pre-wrap;

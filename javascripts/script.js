@@ -5,14 +5,16 @@ const sendUserMessage = document.getElementById("sendUserMessage");
 
 // Activate Server...
 const ActivateServer = async () => {
-  const response = await fetch('https://chat-bot-backend-q9a8.onrender.com/start')
-}
+  const response = await fetch(
+    "https://chat-bot-backend-q9a8.onrender.com/start"
+  );
+};
 ActivateServer();
 
 // Scroll to Bottom Function....
 const scrollToBottom = () => {
   chatHistory.scrollTop = chatHistory.scrollHeight;
-}
+};
 
 // create user message element...
 const userMessageElement = () => {
@@ -27,23 +29,26 @@ const userMessageElement = () => {
 
 // create bot message element...
 const botMessageElement = async () => {
-  const response = await fetch('https://chat-bot-backend-q9a8.onrender.com/chat-bot/request/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      userMessage: userMessage.value,
-    }),
-  })
+  const response = await fetch(
+    "https://chat-bot-backend-q9a8.onrender.com/chat-bot/request/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userMessage: userMessage.value,
+      }),
+    }
+  );
   const data = await response.json();
 
-  if ( data ) {
+  if (data) {
     const botMessageElement = document.createElement("div");
     botMessageElement.classList.add("bot");
-  
-    if ( data.status === 200 ) {
-      botMessageElement.innerHTML =  `
+
+    if (data.status === 200) {
+      botMessageElement.innerHTML = `
         <pre>${marked.parse(data.data.response)}</pre>
       `;
     } else {
@@ -51,16 +56,15 @@ const botMessageElement = async () => {
         <pre>${marked.parse(data.message)}</pre>
       `;
     }
-    
+
     chatHistory.appendChild(botMessageElement);
     scrollToBottom();
   }
-
 };
 
 // Handling Enter Key Press...
 document.addEventListener("DOMContentLoaded", () => {
-    userMessage.addEventListener("keypress", async (event) => {
+  userMessage.addEventListener("keypress", async (event) => {
     if (event.key !== "Enter") return;
     if (userMessage.value === "") return;
     if (sendUserMessage.disabled) return;
@@ -79,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 // Adding Message in chat history when user click the send Button...
 sendUserMessage.addEventListener("click", async () => {
   if (userMessage.value === "") return;
@@ -96,6 +99,3 @@ sendUserMessage.addEventListener("click", async () => {
   sendUserMessage.disabled = false;
   userMessage.value = "";
 });
-
-
-

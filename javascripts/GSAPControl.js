@@ -62,7 +62,6 @@ const changeInputPosition = () => {
   );
 };
 
-
 // Handling Animation when user Press Enter
 userMessage.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
