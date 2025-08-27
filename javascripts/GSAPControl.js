@@ -1,5 +1,6 @@
 const chatHistory = document.getElementById("chatHistory");
 const sendUserMessage = document.getElementById("sendUserMessage");
+const userMessage = document.getElementById("userMessage");
 
 // Basics Animation Function....
 const basicAnimation = () => {
@@ -29,7 +30,7 @@ const basicAnimation = () => {
   });
 };
 
-//
+// State Change Animation Methode
 const changeInputPosition = () => {
   let changeInputPositionTl = gsap.timeline();
 
@@ -60,6 +61,17 @@ const changeInputPosition = () => {
     "-=0.5"
   );
 };
+
+
+// Handling Animation when user Press Enter
+userMessage.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    // checking is chatHistory has any Childern...
+    if (chatHistory.children.length === 0) {
+      changeInputPosition();
+    }
+  }
+});
 
 // Animation when user Intract with Chat Bot...
 sendUserMessage.addEventListener("click", () => {
