@@ -1,3 +1,4 @@
+import { speechToText } from "./speechToText.js"; // Module Import...
 import { micAnimation, stopMicAnimation } from "./GSAPControl.js";
 
 const initialMessage = document.getElementById("initialMessage");
@@ -102,11 +103,20 @@ sendUserMessage.addEventListener("click", async () => {
 });
 
 // Mic Input Handle Method.....
-micButton.addEventListener("click", () => {
+micButton.addEventListener("click", async () => {
   micAnimation();
 
-  setTimeout(() => {
-    stopMicAnimation();
-  }, 5000)
+  await speechToText()
+    .then((message) => {
+      stopMicAnimation();
+      userMessage.value = message;
+    })
+    .catch((error) => {
+      stopMicAnimation();
+      alert(`ERROR: ${error}`);
+    })
+    .finally(() => {
+      stopMicAnimation();
+    });
 });
 
