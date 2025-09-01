@@ -16,7 +16,7 @@ const basicAnimation = () => {
     stagger: 0.3,
     duration: 0.4,
   });
-  tl.from("#initialMessage, #inputContainer", {
+  tl.from("#initialMessage, #inputContainer,#micContainer1", {
     y: -200,
     opacity: 0,
     stagger: 0.3,
@@ -41,7 +41,7 @@ const changeInputPosition = () => {
     display: "none",
   });
   changeInputPositionTl.from(
-    "#inputContainer",
+    "#inputContainer,#micContainer1",
     {
       y: -270,
       duration: 1,
@@ -60,6 +60,34 @@ const changeInputPosition = () => {
     },
     "-=0.5"
   );
+};
+
+// Mic Animation Time Line...
+var micAnimationTl = gsap.timeline({
+  ease: "power4.out",
+  repeat: -1,
+  yoyo: true,
+});
+// Mic Function Animation....
+export const micAnimation = () => {
+  micAnimationTl.to("#micContainer1", {
+    width: "70px",
+    height: "70px",
+    duration: 0.1,
+  });
+  micAnimationTl.to("#micContainer2", {
+    width: "60px",
+    height: "60px",
+    duration: 0.1,
+  });
+  micAnimationTl.to("#mic-button i", {
+    scale: 1.2,
+  });
+  micAnimationTl.restart();
+};
+// Function For Stoping Mic Animation Function...
+export const stopMicAnimation = () => {
+  micAnimationTl.revert();
 };
 
 // Handling Animation when user Press Enter

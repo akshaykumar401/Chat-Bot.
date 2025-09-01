@@ -71,7 +71,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 5px;
 }
 #inputContainer {
   width: 100%;
@@ -118,7 +118,7 @@ main {
 }
 #chatHistory {
   width: 100%;
-  height: calc(100% - 120px);
+  height: calc(100% - 170px);
   display: none;
   flex-direction: column;
   overflow-y: auto;
@@ -155,13 +155,50 @@ main {
   justify-content: flex-start;
   overflow-wrap: break-word;
 }
-.bot pre, .user pre {
-  padding-left: 5px;
+.bot pre,
+.user pre{
+  padding-left: 10px;
 }
 pre {
   word-wrap: break-word;
   white-space: pre-wrap;
   font-size: 1.1rem;
+}
+
+#micContainer1 {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: calc(100% - 80px);
+  background-color: #fff;
+}
+#micContainer2 {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+#mic-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000;
+  border: none;
+  box-shadow: 5px 5px 15px #b3aaaa;
+  cursor: pointer;
+}
+#mic-button:hover {
+  background-color: #302e2e;
+}
+#mic-button i {
+  font-size: 1.2rem;
+  color: #fff;
 }
 
 /* Responsive Code... */
@@ -187,6 +224,9 @@ pre {
   #sendUserMessage {
     width: 20%;
   }
+  #micContainer1 {
+    margin-left: calc(100% - 120px);
+  }
 }
 
 @media (max-width: 400px) {
@@ -199,5 +239,8 @@ pre {
   }
   footer pre {
     font-size: 0.8rem;
+  }
+  #micContainer1{
+    margin-left: calc(100% - 100px);
   }
 }
